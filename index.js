@@ -11,14 +11,26 @@ await db.read();
 db.data ||= { users: [], todos: [] };
 
 const typeDefs = gql`
-  type User { id: ID! email: String! }
-  type Todo { id: ID! text: String! userId: ID! }
-  type Query { todos(userId: ID!): [Todo] }
+  type User { 
+    id: ID! 
+    name: String!
+    email: String! 
+  }
+  type Todo { 
+    id: ID! 
+    text: String! 
+    userId: ID! 
+    completed: Boolean!
+  }
+  type Query { 
+    todos(userId: ID!): [Todo] 
+  }
   type Mutation {
-    signup(email: String!, password: String!): User
+    signup(name: String!, email: String!, password: String!): User
     login(email: String!, password: String!): User
     addTodo(userId: ID!, text: String!): Todo
     deleteTodo(id: ID!): Boolean
+    toggleTodoCompleted(id: ID!): Todo
   }
 `;
 
@@ -27,10 +39,10 @@ const resolvers = {
     todos: (_, { userId }) => db.data.todos.filter(t => t.userId === userId),
   },
   Mutation: {
-    signup: (_, { email }) => {
+    signup: (_, { name , email }) => {
       const exists = db.data.users.find(u => u.email === email);
-      if (exists) throw new Error("User exists");
-      const user = { id: nanoid(), email };
+      if (exists) throw new Error("User already exists");
+      const user = { id: nanoid(), name,  email };
       db.data.users.push(user);
       db.write();
       return user;
@@ -41,7 +53,7 @@ const resolvers = {
       return user;
     },
     addTodo: (_, { userId, text }) => {
-      const todo = { id: nanoid(), text, userId };
+      const todo = { id: nanoid(), text, userId, completed: false  };
       db.data.todos.push(todo);
       db.write();
       return todo;
@@ -50,7 +62,15 @@ const resolvers = {
       db.data.todos = db.data.todos.filter(t => t.id !== id);
       db.write();
       return true;
-    }
+    },
+    toggleTodoCompleted: (_, { id }) => {
+      const todo = db.data.todos.find(t => t.id === id);
+      if (!todo) throw new Error("Todo not found");
+
+      todo.completed = !todo.completed;
+      db.write();
+      return todo;
+    },
   }
 };
 

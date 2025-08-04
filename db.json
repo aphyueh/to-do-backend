@@ -7,6 +7,10 @@
     {
       "id": "72TVl_OP_7PhT_h8kQ7Sf",
       "email": "aphyueh@gmail.com"
+    },
+    {
+      "id": "fQEdLA-FK0Ax-Ao-GWKXt",
+      "email": "apan0063@student.monash.edu"
     }
   ],
   "todos": [
@@ -19,6 +23,12 @@
       "id": "AsF4gbOGHRId4nUPBFr2L",
       "text": "Go for a jog",
       "userId": "72TVl_OP_7PhT_h8kQ7Sf"
+    },
+    {
+      "id": "2j2ynup2R_Xj7lTdyNlAH",
+      "text": "Apply jobs",
+      "userId": "72TVl_OP_7PhT_h8kQ7Sf",
+      "completed": false
     }
   ]
 }
