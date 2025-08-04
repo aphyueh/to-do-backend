@@ -1,0 +1,24 @@
+{
+  "users": [
+    {
+      "id": "Rb8ztb8UXqZQ8YUR4wkqK",
+      "email": "amberpang2002@gmail.com"
+    },
+    {
+      "id": "72TVl_OP_7PhT_h8kQ7Sf",
+      "email": "aphyueh@gmail.com"
+    }
+  ],
+  "todos": [
+    {
+      "id": "HOpSiL4RJ6iDolAtoa_AO",
+      "text": "Read bible",
+      "userId": "Rb8ztb8UXqZQ8YUR4wkqK"
+    },
+    {
+      "id": "AsF4gbOGHRId4nUPBFr2L",
+      "text": "Go for a jog",
+      "userId": "72TVl_OP_7PhT_h8kQ7Sf"
+    }
+  ]
+}
