@@ -1,0 +1,56 @@
+service: graphql-backend
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-east-1
+  stage: ${opt:stage, 'dev'}
+  environment:
+    NODE_ENV: ${self:provider.stage}
+    S3_BUCKET: ${self:service}-${self:provider.stage}-database
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - s3:GetObject
+            - s3:PutObject
+            - s3:ListBucket
+            - s3:DeleteObject
+          Resource: 
+            - "arn:aws:s3:::graphql-backend-dev-database"
+            - "arn:aws:s3:::graphql-backend-dev-database/*"
+
+functions:
+  graphql:
+    handler: src/lambda.handler
+    events:
+      - http:
+          path: graphql
+          method: ANY
+          cors: true
+      - http:
+          path: graphql/{proxy+}
+          method: ANY
+          cors: true
+
+plugins:
+  - serverless-offline
+
+custom:
+  serverless-offline:
+    httpPort: 4000
+
+resources:
+  Resources:
+    DatabaseBucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: ${self:provider.environment.S3_BUCKET}
+        VersioningConfiguration:
+          Status: Enabled
+        PublicAccessBlockConfiguration:
+          BlockPublicAcls: true
+          BlockPublicPolicy: true
+          IgnorePublicAcls: true
+          RestrictPublicBuckets: true
