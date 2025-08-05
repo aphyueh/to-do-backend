@@ -15,18 +15,14 @@
   ],
   "todos": [
     {
-      "id": "HOpSiL4RJ6iDolAtoa_AO",
-      "text": "Read bible",
-      "userId": "Rb8ztb8UXqZQ8YUR4wkqK"
+      "id": "LQDWzfRhpO-pJT9aCgXHg",
+      "text": "Eat cake",
+      "userId": "72TVl_OP_7PhT_h8kQ7Sf",
+      "completed": true
     },
     {
-      "id": "AsF4gbOGHRId4nUPBFr2L",
-      "text": "Go for a jog",
-      "userId": "72TVl_OP_7PhT_h8kQ7Sf"
-    },
-    {
-      "id": "2j2ynup2R_Xj7lTdyNlAH",
-      "text": "Apply jobs",
+      "id": "-g5RA5xzslgXmHFAl0R6M",
+      "text": "Pray",
       "userId": "72TVl_OP_7PhT_h8kQ7Sf",
       "completed": false
     }

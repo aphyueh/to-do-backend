@@ -3,3 +3,7 @@
 
 # misc
 .DS_Store
+
+# Database files
+db.json
+*.db
