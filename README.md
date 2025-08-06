@@ -66,14 +66,12 @@ A minimal GraphQL server for managing user-scoped to-do items, built with Apollo
    ```
    This will deploy the GraphQL API to AWS Lambda and create the S3 bucket defined in `serverless.yml`. The endpoint URL will be displayed in the console output.
 
-## Mobile App and Website 
+<img src="graphql.png" alt="Graphql Sandbox Explorer" width="80%">
+
+## Mobile App and Website Github Repo
 https://github.com/aphyueh/to-do-mobile-app
 https://github.com/aphyueh/to-do-web
 
-
-## GraphQL Schema
-
-Accessible from https://r4dz7ss5od.execute-api.us-east-1.amazonaws.com/dev/graphql 
 
 ### Types
 - **User**:
@@ -143,8 +141,7 @@ mutation {
 
 ```plaintext
 to-do-backend/
-├── src/
-│   └── lambda.js       # Apollo Server setup and GraphQL resolvers
+├── lambda.js           # Apollo Server setup and GraphQL resolvers
 ├── serverless.yml      # Serverless Framework configuration
 ├── package.json        # Node.js dependencies and scripts
 └── .env                # Environment variables (not tracked)
@@ -156,10 +153,6 @@ to-do-backend/
 - **Persistence**: The file-based storage in S3 (`database.json`) is simple but may not scale for large datasets. Consider a database like DynamoDB for production use.
 - **CORS**: Configured to allow cross-origin requests, suitable for frontend integration.
 
-## Contributing
+## Author
 
-Contributions are welcome! Please open an issue or submit a pull request on [GitHub](https://github.com/aphyueh/to-do-backend).
-
-## License
-
-This project is licensed under the MIT License.
+**Amber Pang** - [GitHub Profile](https://github.com/aphyueh)
